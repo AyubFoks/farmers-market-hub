@@ -38,23 +38,27 @@ Farmer's Market Hub is a React application connecting farmers directly to buyers
 ## Installation & Setup
 1. **Clone repository**
    ```bash
-   git clone https://github.com/your-username/farmers-market-hub.git
+   git clone https://github.com/AyubFoks/farmers-market-hub.git
    cd farmers-market-hub
    ```
+
 2. **Install dependencies**
   ```bash
     npm install
     ```
+    
 3. **Run JSON Server**
     ```bash
     npx json-server --watch src/db.json --port 3000
     ```
+
 4. **Run React App**
     ```bash
     npm start
     ```
 
 ---
+
 
 ## Project Structure
     ```
