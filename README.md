@@ -36,6 +36,7 @@ Farmer's Market Hub is a React application connecting farmers directly to buyers
 ---
 
 ## Installation & Setup
+
 1. **Clone repository**
    ```bash
    git clone https://github.com/AyubFoks/farmers-market-hub.git
@@ -43,7 +44,7 @@ Farmer's Market Hub is a React application connecting farmers directly to buyers
    ```
 
 2. **Install dependencies**
-  ```bash
+    ```bash
     npm install
     ```
     
