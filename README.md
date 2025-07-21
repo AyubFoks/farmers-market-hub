@@ -60,21 +60,23 @@ Farmer's Market Hub is a React application connecting farmers directly to buyers
 
 ---
 
+## Project Structure        
 
-## Project Structure
-    ```
-    src/
-     ├── api/            # API functions for CRUD
-     ├── components/     # UI Components
-     ├── pages/          # Pages (Home, Farmers, Buyers)
-     ├── styles/         # CSS files
-     ├── App.jsx         # Main app component
-     ├── index.js        # React entry point
-     └── db.json         # Mock database
-    ```
+        src/
+        ├── api/            # API functions for CRUD
+        ├── components/     # UI Components
+        ├── pages/          # Pages (Home, Farmers, Buyers)
+        ├── styles/         # CSS files
+        ├── App.jsx         # Main app component
+        ├── index.js        # React entry point
+        └── db.json         # Mock database
 
-## Authors & Licence
+## Authors
 
-[Malcolm Kagolobya](https://github.com/KagsM)
-[Amos Banda](https://github.com)
-[Ayub Karanja](https://github.com/AyubFoks)
+- [Malcolm Kagolobya](https://github.com/KagsM)
+- [Amos Banda](https://github.com)
+- [Ayub Karanja](https://github.com/AyubFoks)
+
+## Licence
+
+Free to use and modify for personal and commercial purposes.
