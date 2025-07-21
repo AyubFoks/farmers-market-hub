@@ -74,7 +74,7 @@ Farmer's Market Hub is a React application connecting farmers directly to buyers
 ## Authors
 
 - [Malcolm Kagolobya](https://github.com/KagsM)
-- [Amos Banda](https://github.com)
+- [Amos Banda](https://github.com/BandaTheSecond)
 - [Ayub Karanja](https://github.com/AyubFoks)
 
 ## Licence
