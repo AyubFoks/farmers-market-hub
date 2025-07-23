@@ -6,7 +6,6 @@
       "price": 200,
       "location": "Nairobi",
       "farmer": "Amos Banda",
-      "verified": true,
       "available": true
     }
   ],
