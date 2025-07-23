@@ -16,6 +16,30 @@
       "location": "Nairobi",
       "farmer": "Amos Banda",
       "available": true
+    },
+    {
+      "id": 2,
+      "name": "Potatoes",
+      "price": 150,
+      "location": "Kampala",
+      "farmer": "Malcolm Kagolobya",
+      "available": true
+    },
+    {
+      "id": 3,
+      "name": "Onions",
+      "price": 100,
+      "location": "Nairobi",
+      "farmer": "Amos Banda",
+      "available": false
+    },
+    {
+      "id": 4,
+      "name": "Carrots",
+      "price": 120,
+      "location": "Kampala",
+      "farmer": "Malcolm Kagolobya",
+      "available": true
     }
   ],
   "orders": [

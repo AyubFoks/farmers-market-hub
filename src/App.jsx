@@ -1,11 +1,11 @@
 import React from "react";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
-import Header from "./components/Header";
-import Home from "./pages/Home";
-import MarketPlace from "./pages/Buyers";
-import FarmersHub from "./pages/Farmers";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
+import Header from "./components/Header.jsx";
+import Home from "./pages/Home.jsx";
+import MarketPlace from "./pages/Buyers.jsx";
+import FarmersHub from "./pages/Farmers.jsx";
+import Login from "./pages/Login.jsx";
+import Register from "./pages/Register.jsx";
 
 function App() {
     return (
