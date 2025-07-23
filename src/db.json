@@ -1,7 +1,16 @@
 {
   "products": [
     {
-      "id": 1,
+        "id": 1,
+        "name": "Dry Maize",
+        "category": "Grains",
+        "location": "Kisumu",
+        "price": 250,
+        "unit": "bag",
+        "image": ""
+    },
+    {
+      "id": 2,
       "name": "Tomatoes",
       "price": 200,
       "location": "Nairobi",
