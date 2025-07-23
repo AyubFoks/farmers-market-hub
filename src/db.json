@@ -1,0 +1,28 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Tomatoes",
+      "price": 200,
+      "location": "Nairobi",
+      "farmer": "Amos Banda",
+      "verified": true,
+      "available": true
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "productId": 1,
+      "buyer": "Malcolm Kagolobya",
+      "status": "pending"
+    }
+  ],
+  "user": [
+    {
+      "id": 1,
+      "name": "Amos Banda",
+      "verified": true
+    }
+  ]
+}
