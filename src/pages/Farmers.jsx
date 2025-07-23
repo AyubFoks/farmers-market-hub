@@ -15,7 +15,8 @@ function FarmersHub() {
 
   return (
     <div className="farmers-hub">
-      <h2> Post Product</h2>
+      <h1> Welcome to the Farmers Hub! </h1>
+      <p> Post your products here and connect with buyers. </p>
       <ProductForm onSubmit={handleAddProduct} />
 
       <div className="product-grid">

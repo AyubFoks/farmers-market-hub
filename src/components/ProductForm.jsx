@@ -36,7 +36,7 @@ function ProductForm({ onAddProduct }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2> Post New Product </h2>
+      <h2> POST PRODUCT </h2>
 
       <input
         type="text"
