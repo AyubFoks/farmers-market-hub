@@ -9,10 +9,10 @@ function FarmersHub() {
     setProducts([...products, newProduct]);
   }
 
-  function handleDeleteProduct(name) {
-    setProducts(products.filter((p) => p.name !== name));
+  function handleDeleteProduct(id) {
+    setProducts(products.filter((p) => p.id !== id));
   }
-
+  
   return (
     <div className="farmers-hub">
       <h1> Welcome to the Farmers Hub! </h1>

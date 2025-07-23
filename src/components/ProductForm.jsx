@@ -11,7 +11,7 @@ function ProductForm({ onSubmit}) {
     e.preventDefault();
 // For any field left blank
     if (!name || !price || !quantity || !location || !image) {
-      alert("Please fill in the missing fields.");
+      alert("Please fill all the missing fields.");
       return;
     }
 
