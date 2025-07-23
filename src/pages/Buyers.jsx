@@ -69,4 +69,4 @@ function Marketplace() {
     );
     }
 
-    export default Buyers;
+    export default Marketplace;
