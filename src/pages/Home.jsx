@@ -1,5 +1,4 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import '../styles/components.css';
 
 
@@ -94,7 +93,7 @@ function Home() {
                             <tr>Ksh. 50/litre</tr>
                         </table>
                     </li>
-                    
+
                 </ul>
                 
             </div>
