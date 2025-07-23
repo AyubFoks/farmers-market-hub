@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function ProductForm({ onAddProduct }) {
+function ProductForm({ onSubmit}) {
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [quantity, setQuantity] = useState('');
@@ -11,20 +11,20 @@ function ProductForm({ onAddProduct }) {
     e.preventDefault();
 // For any field left blank
     if (!name || !price || !quantity || !location || !image) {
-      alert("Please fill in the missing fields.");
+      alert("Please fill all the missing fields.");
       return;
     }
 
     const newProduct = {
       id: Date.now(),
       name,
-      price,
-      quantity,
-      location,
-      image
+      price: parseFloat(price),
+      quantity: parseInt(quantity),
+      location: location.trim(),
+      image: image.trim(),
     };
 
-    onAddProduct(newProduct);
+    onSubmit(newProduct);
 
     // To Reset form
     setName('');
@@ -36,7 +36,7 @@ function ProductForm({ onAddProduct }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2> Post New Product </h2>
+      <h2> POST PRODUCT </h2>
 
       <input
         type="text"
