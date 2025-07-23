@@ -1,18 +1,17 @@
 import  React from 'react';
 import '../styles/components.css';
 
-
-function SearchFilter({ searchTerm, setSearchTerm }) {
-  const handleChange = (event) => {
+function SearchBar({ searchTerm, setSearchTerm }) {
+  const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
   return (
-    <div className="search-filter">
+    <div className="search-bar">
       <input
         type="text"
         value={searchTerm}
-        onChange={handleChange}
+        onChange={handleInputChange}
         placeholder="Search..."
         className="search-input"
       />
@@ -20,4 +19,4 @@ function SearchFilter({ searchTerm, setSearchTerm }) {
   );
 }
 
-export default SearchFilter;
+export default SearchBar;
