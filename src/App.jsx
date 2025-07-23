@@ -1,7 +1,6 @@
-<<<<<<< HEAD
 import React from "react";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
-import Navbar from "./components/Header";
+import Header from "./components/Header";
 import Home from "./pages/Home";
 import MarketPlace from "./pages/Buyers";
 import FarmersHub from "./pages/Farmers";
@@ -11,7 +10,7 @@ import Register from "./pages/Register";
 function App() {
     return (
         <Router>
-            <Navbar />
+            <Header />
             <Routes>
                 <Route path="/" element ={<Home />} />
                 <Route path="/marketplace" element={<MarketPlace />} />
@@ -21,20 +20,6 @@ function App() {
             </Routes>
         </Router>
     )
-=======
-import React from 'react';
-import Header from './components/Header';
-import './styles/App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <div className="App-container">
-        <Header />
-      </div>
-    </div>
-  );
->>>>>>> main
 }
 
 export default App;
