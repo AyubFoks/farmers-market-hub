@@ -1,10 +1,11 @@
 .App-header {
     background-color: #7ED957;
-    max-height: 100px;
+    height: 100px;
     width: 100%;
     display: flex;
     flex-direction: row;
-    align-items: space-between;
+    justify-content: space-between;
+    align-items: center;
     font-size: calc(10px + 2vmin);
     color: white;
     border-radius: 20px 20px 0 0;
@@ -14,16 +15,33 @@
 .App-logo {
     height: 40px;
     pointer-events: none;
-    margin-left: 20px; 
-    margin-top: 20px;
+    margin-left: 20px;
 }
 
-.nav-links li {
+.user {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin-right: 20px;
+}
+
+.nav-links a {
     color: white;
     text-decoration: none;
     font-size: 1.2rem;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-right: 20px;
+    text-transform: uppercase;
+    border-bottom: white solid 2px;
+    padding: 3px;
+}
+
+.nav-links a:hover {
+    border: white solid 2px;
+    transition: border 0.3s ease-in-out;
 }

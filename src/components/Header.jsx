@@ -11,7 +11,7 @@ function Header() {
                 <li><a href="/pages/Farmers.jsx">Farmer's Hub</a></li>
                 <li><a href="/pages/Buyers.jsx">Marketplace</a></li>
             </ul>
-            <img src='{userImage}' className='user' alt='{userame}' />
+            <img src='{userImage}' className='user' alt='{user}' />
         </header>
     );
 }
