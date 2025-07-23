@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Navbar from "./components/Header";
@@ -20,6 +21,20 @@ function App() {
             </Routes>
         </Router>
     )
+=======
+import React from 'react';
+import Header from './components/Header';
+import './styles/App.css';
+
+function App() {
+  return (
+    <div className="App">
+      <div className="App-container">
+        <Header />
+      </div>
+    </div>
+  );
+>>>>>>> main
 }
 
 export default App;
