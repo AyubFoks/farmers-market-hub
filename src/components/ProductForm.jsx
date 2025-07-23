@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function ProductForm({ onAddProduct }) {
+function ProductForm({ onSubmit}) {
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [quantity, setQuantity] = useState('');
@@ -18,13 +18,13 @@ function ProductForm({ onAddProduct }) {
     const newProduct = {
       id: Date.now(),
       name,
-      price,
-      quantity,
-      location,
-      image
+      price: parseFloat(price),
+      quantity: parseInt(quantity),
+      location: location.trim(),
+      image: image.trim(),
     };
 
-    onAddProduct(newProduct);
+    onSubmit(newProduct);
 
     // To Reset form
     setName('');
