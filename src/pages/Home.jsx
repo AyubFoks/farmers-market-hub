@@ -1,10 +1,11 @@
 import React from "react";
 import '../styles/components.css';
+import logoGreen from '../assets/logo-green.svg';
 
 
 function Home() {
     return (
-        <div className="home">
+        <div className="home-container">
             <div className="sidebar" >
                 <h4>Market Trends</h4>
                 <hr />
@@ -12,8 +13,9 @@ function Home() {
                     <li>
                         <p>Nakuru</p>
                         <table>
-                            <tr>SukumaWiki</tr>
-                            <tr>Ksh. 800/bag</tr>
+
+                            <th>Product</th><th>Price</th>
+                            <tr>SukumaWiki</tr><tr>Ksh. 800/bag</tr>
                             <tr>Maize</tr>
                             <tr>Ksh. 1200/bag</tr>
                             <tr>Beans</tr>
@@ -95,15 +97,19 @@ function Home() {
                     </li>
 
                 </ul>
-                
+
             </div>
             <div className="main-content">
                 <h2>Welcome to</h2>
-                <img className="homepage-logo" src="/path/to/logo.png" alt="Farmers Market Hub Logo" />
+                <img className="homepage-logo" src={logoGreen} alt="Farmers Market Hub Logo" />
                 <div className="homepage-query">
-                    <h3>What do you want to do today?</h3>
-                    <button className="query-button1">Explore Marketplace</button>
-                    <button className="query-button2">Explore Farmers Hub</button>
+                    <div>
+                        <h3>What do you want to do <br />today?</h3>
+                    </div>
+                    <div className="buttons-container">
+                        <button className="query-button1">BUY</button>
+                        <button className="query-button2">SELL</button>
+                    </div>
                 </div>
                 <h4>Resources</h4>
                 <hr />
