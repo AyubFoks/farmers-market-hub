@@ -42,14 +42,18 @@
       "available": true
     }
   ],
-  "orders": [
-    {
-      "id": 1,
-      "productId": 1,
-      "buyer": "Malcolm Kagolobya",
-      "status": "pending"
-    }
-  ],
+  "orders": {
+  "orderId": {
+    "buyerId": "UID123",
+    "sellerId": "UID456",
+    "productId": "prod001",
+    "quantity": 2,
+    "totalPrice": 5000,
+    "status": "pending",
+    "createdAt": "Timestamp",
+    "deliveryLocation": "Kampala, Uganda"
+  }
+},
   "user": [
     {
       "id": 1,
