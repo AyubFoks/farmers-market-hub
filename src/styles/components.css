@@ -1,4 +1,3 @@
-
 /* Header.jsx */
 
 .App-header {
@@ -21,10 +20,58 @@
     margin-left: 20px;
 }
 
-.user {
+.user-section {
     display: flex;
-    align-items: center;
+    align-content: center;
     margin-right: 20px;
+}
+
+.user-section a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    margin-left: 20px;
+}
+
+.user-section img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user-dropdown {
+    position: absolute;
+    max-width: 150px;
+    min-width: 100px;
+    top: 60px;
+    right: 10px;
+    background-color: white;
+    color: #333;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+}
+
+.user-dropdown span {
+    display: block;
+    padding: 5px 0;
+    font-size: 1rem;
+}
+
+.logout-btn {
+    background-color: #009f52;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
 }
 
 .nav-links {
@@ -50,12 +97,6 @@
     transition: border 0.3s ease-in-out;
 }
 
-.user-image {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
 
 /* Homepage */
 
@@ -141,4 +182,239 @@ hr {
     background-color: #009f52;
     color: white;
     transition: background-color 0.3s ease-in-out;
+}
+
+/* Login & Register Pages */
+.login-container,
+.register-container {
+    max-width: 400px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 40px 30px 30px 30px;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signup-logo {
+    width: 400px;
+    margin-bottom: 20px;
+}
+.login-form,
+.register-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.login-form input,
+.register-form input {
+    padding: 12px;
+    border: 2px solid #7ED957;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    outline: none;
+    background: #f9f9f9;
+    transition: border 0.2s;
+}
+
+.login-form input:focus,
+.register-form input:focus {
+    border-color: #009f52;
+}
+
+.login-form button,
+.register-form button,
+.google-btn {
+    width: auto;
+    min-width: 140px;
+    display: inline-block;
+    padding: 15px 24px;
+    margin: 0 auto;
+    background-color: #009f52;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: background 0.3s, color 0.3s;
+    text-align: center;
+}
+
+.login-form button:hover,
+.register-form button:hover,
+.google-btn:hover {
+    background-color: #7ED957;
+    color: #009f52;
+}
+
+.login-form .google-btn,
+.register-form .google-btn {
+    background: #fff;
+    color: #009f52;
+    border: 2px solid #009f52;
+    margin-top: 5px;
+}
+
+.login-form .google-btn:hover,
+.register-form .google-btn:hover {
+    background: #009f52;
+    color: #fff;
+}
+
+.error {
+    color: #d32f2f;
+    background: #ffeaea;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin-top: 5px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.success {
+    color: #009f52;
+    background: #eaffea;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin-top: 5px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+/* Buyers & Farmers Marketplace Pages */
+.marketplace-container,
+.farmershub-container {
+    padding: 30px 40px;
+    background: #f9f9f9;
+    border-radius: 20px;
+    margin: 30px auto;
+    max-width: 1200px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.marketplace-heading,
+.farmershub-heading {
+    color: #009f52;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.marketplace-layout,
+.farmershub-layout {
+    display: flex;
+    gap: 30px;
+}
+
+.marketplace-content,
+.farmershub-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.product-grid,
+.farmer-product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-top: 20px;
+}
+
+.product-card,
+.farmer-product-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: box-shadow 0.2s;
+}
+
+.product-card:hover,
+.farmer-product-card:hover {
+    box-shadow: 0 4px 16px rgba(0,191,99,0.12);
+}
+
+.product-card h3,
+.farmer-product-card h3 {
+    color: #009f52;
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+.product-card p,
+.farmer-product-card p {
+    color: #333;
+    margin-bottom: 6px;
+    font-size: 1rem;
+}
+
+.no-products-message {
+    color: #d32f2f;
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 30px;
+}
+
+/* Filter & SearchBar */
+.filter-container,
+.searchbar-container {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    padding: 20px;
+    margin-bottom: 20px;
+    min-width: 220px;
+}
+
+.filter-container select,
+.searchbar-container input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #7ED957;
+    border-radius: 8px;
+    font-size: 1rem;
+    margin-top: 8px;
+    outline: none;
+    background: #f9f9f9;
+    transition: border 0.2s;
+}
+
+.filter-container select:focus,
+.searchbar-container input:focus {
+    border-color: #009f52;
+}
+
+/* Add to components.css */
+.market-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,191,99,0.08);
+}
+.market-table th, .market-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #e0e0e0;
+    text-align: left;
+}
+.market-table th {
+    background: #7ED957;
+    color: #fff;
+    font-weight: bold;
+}
+.market-table tr:last-child {
+    border-bottom: none;
 }

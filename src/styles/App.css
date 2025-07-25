@@ -4,10 +4,10 @@
     font-family: Outfit, sans-serif;
     background-color: white;
     border-radius: 20px;
-    height: 100vh;
     margin-top: 20px;
     margin-bottom: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding-bottom: 20px;
 }
 
 h1, h2, h3, h4, h5, h6 {

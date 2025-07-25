@@ -1,103 +1,130 @@
-import React from "react";
+import React, { useState } from "react";
 import '../styles/components.css';
 import logoGreen from '../assets/logo-green.svg';
 
+const marketData = [
+    {
+        town: "Nakuru",
+        prices: [
+            { item: "SukumaWiki", price: "Ksh. 800/bag" },
+            { item: "Maize", price: "Ksh. 1200/bag" },
+            { item: "Beans", price: "Ksh. 1500/bag" },
+            { item: "Potatoes", price: "Ksh. 1000/bag" },
+            { item: "Carrots", price: "Ksh. 900/bag" },
+            { item: "Onions", price: "Ksh. 1100/bag" },
+            { item: "Eggs", price: "Ksh. 400/tray" },
+            { item: "Milk", price: "Ksh. 50/litre" },
+        ]
+    },
+    {
+        town: "Nairobi",
+        prices: [
+            { item: "SukumaWiki", price: "Ksh. 850/bag" },
+            { item: "Maize", price: "Ksh. 1250/bag" },
+            { item: "Beans", price: "Ksh. 1600/bag" },
+            { item: "Potatoes", price: "Ksh. 1100/bag" },
+            { item: "Carrots", price: "Ksh. 950/bag" },
+            { item: "Onions", price: "Ksh. 1200/bag" },
+            { item: "Eggs", price: "Ksh. 450/tray" },
+            { item: "Milk", price: "Ksh. 55/litre" },
+        ]
+    },
+    {
+        town: "Mombasa",
+        prices: [
+            { item: "SukumaWiki", price: "Ksh. 900/bag" },
+            { item: "Maize", price: "Ksh. 1300/bag" },
+            { item: "Beans", price: "Ksh. 1700/bag" },
+            { item: "Potatoes", price: "Ksh. 1200/bag" },
+            { item: "Carrots", price: "Ksh. 1000/bag" },
+            { item: "Onions", price: "Ksh. 1300/bag" },
+            { item: "Eggs", price: "Ksh. 500/tray" },
+            { item: "Milk", price: "Ksh. 60/litre" },
+        ]
+    },
+    {
+        town: "Kisumu",
+        prices: [
+            { item: "SukumaWiki", price: "Ksh. 800/bag" },
+            { item: "Maize", price: "Ksh. 1200/bag" },
+            { item: "Beans", price: "Ksh. 1500/bag" },
+            { item: "Potatoes", price: "Ksh. 1000/bag" },
+            { item: "Carrots", price: "Ksh. 900/bag" },
+            { item: "Onions", price: "Ksh. 1100/bag" },
+            { item: "Eggs", price: "Ksh. 400/tray" },
+            { item: "Milk", price: "Ksh. 50/litre" },
+        ]
+    },
+    {
+        town: "Eldoret",
+        prices: [
+            { item: "SukumaWiki", price: "Ksh. 780/bag" },
+            { item: "Maize", price: "Ksh. 1100/bag" },
+            { item: "Beans", price: "Ksh. 1400/bag" },
+            { item: "Potatoes", price: "Ksh. 950/bag" },
+            { item: "Carrots", price: "Ksh. 850/bag" },
+            { item: "Onions", price: "Ksh. 1000/bag" },
+            { item: "Eggs", price: "Ksh. 380/tray" },
+            { item: "Milk", price: "Ksh. 48/litre" },
+        ]
+    },
+    {
+        town: "Thika",
+        prices: [
+            { item: "SukumaWiki", price: "Ksh. 820/bag" },
+            { item: "Maize", price: "Ksh. 1180/bag" },
+            { item: "Beans", price: "Ksh. 1450/bag" },
+            { item: "Potatoes", price: "Ksh. 980/bag" },
+            { item: "Carrots", price: "Ksh. 870/bag" },
+            { item: "Onions", price: "Ksh. 1050/bag" },
+            { item: "Eggs", price: "Ksh. 390/tray" },
+            { item: "Milk", price: "Ksh. 49/litre" },
+        ]
+    },
+];
 
 function Home() {
+    const [openIndex, setOpenIndex] = useState(null);
+
+    const handleToggle = (idx) => {
+        setOpenIndex(openIndex === idx ? null : idx);
+    };
+
     return (
         <div className="home-container">
-            <div className="sidebar" >
+            <div className="sidebar">
                 <h4>Market Trends</h4>
                 <hr />
-                <ul>
-                    <li>
-                        <p>Nakuru</p>
-                        <table>
-
-                            <th>Product</th><th>Price</th>
-                            <tr>SukumaWiki</tr><tr>Ksh. 800/bag</tr>
-                            <tr>Maize</tr>
-                            <tr>Ksh. 1200/bag</tr>
-                            <tr>Beans</tr>
-                            <tr>Ksh. 1500/bag</tr>
-                            <tr>Potatoes</tr>
-                            <tr>Ksh. 1000/bag</tr>
-                            <tr>Carrots</tr>
-                            <tr>Ksh. 900/bag</tr>
-                            <tr>Onions</tr>
-                            <tr>Ksh. 1100/bag</tr>
-                            <tr>Eggs</tr>
-                            <tr>Ksh. 400/tray</tr>
-                            <tr>Milk</tr>
-                            <tr>Ksh. 50/litre</tr>
-                        </table>
-                    </li>
-                    <li>
-                        <p>Nairobi</p>
-                        <table>
-                            <tr>SukumaWiki</tr>
-                            <tr>Ksh. 850/bag</tr>
-                            <tr>Maize</tr>
-                            <tr>Ksh. 1250/bag</tr>
-                            <tr>Beans</tr>
-                            <tr>Ksh. 1600/bag</tr>
-                            <tr>Potatoes</tr>
-                            <tr>Ksh. 1100/bag</tr>
-                            <tr>Carrots</tr>
-                            <tr>Ksh. 950/bag</tr>
-                            <tr>Onions</tr>
-                            <tr>Ksh. 1200/bag</tr>
-                            <tr>Eggs</tr>
-                            <tr>Ksh. 450/tray</tr>
-                            <tr>Milk</tr>
-                            <tr>Ksh. 55/litre</tr>
-                        </table>
-                    </li>
-                    <li>
-                        <p>Mombasa</p>
-                        <table>
-                            <tr>SukumaWiki</tr>
-                            <tr>Ksh. 900/bag</tr>
-                            <tr>Maize</tr>
-                            <tr>Ksh. 1300/bag</tr>
-                            <tr>Beans</tr>
-                            <tr>Ksh. 1700/bag</tr>
-                            <tr>Potatoes</tr>
-                            <tr>Ksh. 1200/bag</tr>
-                            <tr>Carrots</tr>
-                            <tr>Ksh. 1000/bag</tr>
-                            <tr>Onions</tr>
-                            <tr>Ksh. 1300/bag</tr>
-                            <tr>Eggs</tr>
-                            <tr>Ksh. 500/tray</tr>
-                            <tr>Milk</tr>
-                            <tr>Ksh. 60/litre</tr>
-                        </table>
-                    </li>
-                    <li>
-                        <p>Kisumu</p>
-                        <table>
-                            <tr>SukumaWiki</tr>
-                            <tr>Ksh. 800/bag</tr>
-                            <tr>Maize</tr>
-                            <tr>Ksh. 1200/bag</tr>
-                            <tr>Beans</tr>
-                            <tr>Ksh. 1500/bag</tr>
-                            <tr>Potatoes</tr>
-                            <tr>Ksh. 1000/bag</tr>
-                            <tr>Carrots</tr>
-                            <tr>Ksh. 900/bag</tr>
-                            <tr>Onions</tr>
-                            <tr>Ksh. 1100/bag</tr>
-                            <tr>Eggs</tr>
-                            <tr>Ksh. 400/tray</tr>
-                            <tr>Milk</tr>
-                            <tr>Ksh. 50/litre</tr>
-                        </table>
-                    </li>
-
+                <ul className="market-list">
+                    {marketData.map((market, idx) => (
+                        <li key={market.town}>
+                            <p
+                                style={{ cursor: "pointer", fontWeight: "bold", color: "#009f52" }}
+                                onClick={() => handleToggle(idx)}
+                            >
+                                {market.town}
+                            </p>
+                            {openIndex === idx && (
+                                <table className="market-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Product</th>
+                                            <th>Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {market.prices.map((row, i) => (
+                                            <tr key={i}>
+                                                <td>{row.item}</td>
+                                                <td>{row.price}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            )}
+                        </li>
+                    ))}
                 </ul>
-
             </div>
             <div className="main-content">
                 <h2>Welcome to</h2>
@@ -107,8 +134,8 @@ function Home() {
                         <h3>What do you want to do <br />today?</h3>
                     </div>
                     <div className="buttons-container">
-                        <button className="query-button1">BUY</button>
-                        <button className="query-button2">SELL</button>
+                        <button onClick={() => window.location.href="/marketplace"} className="query-button1">BUY</button>
+                        <button onClick={() => window.location.href="/farmers-hub"} className="query-button2">SELL</button>
                     </div>
                 </div>
                 <h4>Resources</h4>
