@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { auth } from '../api/firebase';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import logo from '../assets/logo.svg';
+import defaultuser from '../assets/default-user.png';
 import '../styles/components.css';
 
 function Header() {
@@ -48,7 +49,7 @@ function Header() {
                 {user ? (
                     <div style={{ position: "relative" }}>
                         <img
-                            src={user.photoURL || "/default-user.png"}
+                            src={user.photoURL || defaultuser}
                             className="user-image"
                             alt={user.displayName || "User"}
                             onClick={() => setDropdownOpen((open) => !open)}
@@ -62,7 +63,7 @@ function Header() {
                         )}
                     </div>
                 ) : (
-                    <a href="/login" className="login-link">Log in</a>
+                    <a href="/" className="login-link">Log in</a>
                 )}
             </div>
         </header>
