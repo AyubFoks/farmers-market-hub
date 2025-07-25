@@ -49,12 +49,5 @@
       "buyer": "Malcolm Kagolobya",
       "status": "pending"
     }
-  ],
-  "user": [
-    {
-      "id": 1,
-      "name": "Amos Banda",
-      "verified": true
-    }
   ]
 }

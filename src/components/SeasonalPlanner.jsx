@@ -35,7 +35,7 @@ function SeasonalPlanner() {
       <h3>Seasonal Planner for {region}</h3>
       <ul>
         {seasonalTips.map((tip, index) => (
-          <li key={index}>🌱 {tip}</li>
+          <li key={index}>Tip: {tip}</li>
         ))}
       </ul>
     </div>
