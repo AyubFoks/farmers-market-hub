@@ -22,6 +22,7 @@ function ProductForm({ onSubmit}) {
       quantity: parseInt(quantity),
       location: location.trim(),
       image: image.trim(),
+      contact: '0700000000', // Default contact number
     };
 
     onSubmit(newProduct);
@@ -32,6 +33,8 @@ function ProductForm({ onSubmit}) {
     setQuantity('');
     setLocation('');
     setImage('');
+    
+    alert("Product added successfully!");
   }
 
   return (
