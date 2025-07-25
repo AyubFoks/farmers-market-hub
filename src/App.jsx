@@ -6,6 +6,7 @@ import MarketPlace from "./pages/Buyers.jsx";
 import FarmersHub from "./pages/Farmers.jsx";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
+import SeasonalPlanner from './components/SeasonalPlanner';
 import "./styles/App.css";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
                     <Route path="/farmers-hub" element={<FarmersHub />} />
                     <Route path="/" element={<Login />} />
                     <Route path="/register" element={<Register />} />
+                    <Route path="/planner" element={<SeasonalPlanner />} />
                 </Routes>
             </Router>
         </div>

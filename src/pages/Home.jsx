@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import '../styles/components.css';
 import logoGreen from '../assets/logo-green.svg';
+import { Link } from 'react-router-dom';
 
 const marketData = [
     {
@@ -141,7 +142,7 @@ function Home() {
                 <h4>Resources</h4>
                 <hr />
                 <ul className="resources-list">
-                    <li><a href="/path/to/resource1">Seasonal Crop Planner</a></li>
+                    <li><Link to="/planner">Seasonal Crop Planner</Link></li>
                     <li><a href="/path/to/resource2">Farmer's Blog</a></li>
                 </ul>
             </div>
