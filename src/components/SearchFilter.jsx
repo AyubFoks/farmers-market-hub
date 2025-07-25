@@ -1,5 +1,5 @@
 import React from 'react';
-//import './SearchFilter.css';
+import '../styles/components.css';
 
 function SearchFilter({ products, selectedCategory, onFilterChange }) {
   const categories = Array.from(new Set(products.map(p => p.category)));

@@ -8,7 +8,7 @@ function Marketplace() {
     const [products, setProducts] = useState([]);
     const [filtered, setFiltered] = useState([]);
     const [searchText, setSearchText] = useState("");
-    const [SelectedCategory, setSelecetdCategory] = useState("All");
+    const [selectedCategory, setSelecetdCategory] = useState("");
 
     useEffect(() => {
         fetch('http://localhost:3000/products')
@@ -24,7 +24,6 @@ function Marketplace() {
 
         if(searchText) {
             updated = updated.filter(product =>
-
                 product.name.toLowerCase().includes(searchText.toLowerCase()) ||
                 product.location.toLowerCase().includes(searchText.toLowerCase())
             );
@@ -32,12 +31,12 @@ function Marketplace() {
 
         if(SelectedCategory) {
             updated = updated.filter(product => 
-                product.category === SelectedCategory
+                product.category === selectedCategory
             );
         }
 
         setFiltered(updated);
-    }, [searchText, SelectedCategory,products]);
+    }, [searchText, selectedCategory,products]);
 
     return (
         <div className="marketplace-container">
@@ -46,7 +45,7 @@ function Marketplace() {
             <div className="marketplace-layout">
                 <SearchFilter
                 products={products}
-                SelectedCategory={SelectedCategory}
+                selectedCategory={selectedCategory}
                 onFilterChange={setSelecetdCategory}
                 />
                 <div className="marketplace-content">

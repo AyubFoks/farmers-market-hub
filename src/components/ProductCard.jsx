@@ -3,7 +3,7 @@ import '../styles/components.css';
 import img from '../assets/logo.svg';
 
 function ProductCard({ product, onDelete }) {
-  const { id, name, price, quantity, location, image } = product;
+  const { id, name, price, quantity, location, image, farmer, available } = product;
 
   function handleDelete() {
     onDelete(id); // Delete by product ID
@@ -16,7 +16,8 @@ function ProductCard({ product, onDelete }) {
       <p>Price: Ksh {Number(price).toFixed(2)}</p>
       <p>Quantity: {quantity}</p>
       <p>Location: {location}</p>
-      <button onClick={handleDelete}>Delete</button>
+      <p>Farmer: {farmer}</p>
+      <p>Availabilty: {available}</p>
     </div>
   );
 }
