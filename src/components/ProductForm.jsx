@@ -2,40 +2,69 @@ import React, { useState } from 'react';
 import { db, ref, push, set } from "../api/firebase";
 import { auth } from "../api/firebase";
 
+
 function ProductForm() {
   const [name, setName] = useState('');
+  const [category, setCategory] = useState('General');
   const [price, setPrice] = useState('');
   const [quantity, setQuantity] = useState('');
   const [unit, setUnit] = useState('');
   const [location, setLocation] = useState('');
   const [description, setDescription] = useState('');
   const [imageFile, setImageFile] = useState(null);
-  const [imageUrl, setImageUrl] = useState('');
+  const [contact, setContact] = useState('');
   const [loading, setLoading] = useState(false);
+
+  // Replace with your Cloudinary unsigned upload preset and cloud name
+  const CLOUDINARY_UPLOAD_PRESET = "Farmers-Connect";
+  const CLOUDINARY_CLOUD_NAME = "dbnqkctmx";
+
+  async function uploadToCloudinary(file) {
+    const url = `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`;
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+
+    const res = await fetch(url, {
+      method: "POST",
+      body: formData
+    });
+    const data = await res.json();
+    return data.secure_url;
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
 
-    if (!name || !price || !quantity || !unit || !location || !description || (!imageFile && !imageUrl)) {
+    if (!name || !category || !price || !quantity || !unit || !location || !description || !imageFile || !contact) {
       alert("Please fill all the missing fields.");
       return;
     }
 
     setLoading(true);
 
-    let finalImageUrl = imageUrl;
+    let finalImageUrl = "";
+    try {
+      finalImageUrl = await uploadToCloudinary(imageFile);
+    } catch (err) {
+      alert("Image upload failed.");
+      setLoading(false);
+      return;
+    }
 
     const user = auth.currentUser;
     const postedBy = user ? (user.displayName || user.email) : "Anonymous";
 
     const newProduct = {
       name,
+      category: "General",
       price: parseFloat(price),
       quantity: parseInt(quantity),
       unit: unit.trim(),
       location: location.trim(),
       description: description.trim(),
       image: finalImageUrl,
+      contact: contact.trim(),
       postedBy,
       createdAt: Date.now()
     };
@@ -47,13 +76,14 @@ function ProductForm() {
 
       // Reset form
       setName('');
+      setCategory('');
       setPrice('');
       setQuantity('');
       setUnit('');
       setLocation('');
       setDescription('');
       setImageFile(null);
-      setImageUrl('');
+      setContact('');
       alert("Product posted successfully!");
     } catch (err) {
       alert("Error posting product: " + err.message);
@@ -72,6 +102,24 @@ function ProductForm() {
         placeholder="Product Name"
         required
       />
+
+      <select
+        value={category}
+        onChange={e => setCategory(e.target.value)}
+        required
+      >
+        <option value="General">General</option>
+        <option value="Fruits">Fruits</option>
+        <option value="Vegetables">Vegetables</option>
+        <option value="Grains">Grains</option>
+        <option value="Dairy">Dairy</option>
+        <option value="Meat">Meat</option>
+        <option value="Poultry">Poultry</option>
+        <option value="Fish">Fish</option>
+        <option value="Herbs">Herbs</option>
+        <option value="Spices">Spices</option>
+        <option value="Other">Other</option>
+      </select>
 
       <input
         type="number"
@@ -117,19 +165,19 @@ function ProductForm() {
       />
 
       <input
-        type="text"
-        value={imageUrl}
-        onChange={e => setImageUrl(e.target.value)}
-        placeholder="Image URL"
-        required={!imageFile}
-      />
-
-      {/* Placeholder for file upload (optional) */}
-      {/* <input
         type="file"
         accept="image/*"
         onChange={e => setImageFile(e.target.files[0])}
-      /> */}
+        required
+      />
+
+      <input
+        type="text"
+        value={contact}
+        onChange={e => setContact(e.target.value)}
+        placeholder="Contact Information"
+        required
+      />
 
       <button type="submit" disabled={loading}>
         {loading ? "Posting..." : "Add Product"}
