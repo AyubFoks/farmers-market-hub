@@ -7,23 +7,23 @@ function SearchFilter({ products, selectedCategory, onFilterChange }) {
   return (
     <div className="filter-sidebar">
       <h4>Filter by Category</h4>
-      <ul>
-        <li
-          onClick={() => onFilterChange('')}
+      <select>
+        <option
+          onChange={() => onFilterChange('')}
           className={selectedCategory === '' ? 'active' : ''}
         >
           All
-        </li>
+        </option>
         {categories.map((category, idx) => (
-          <li
+          <option
             key={idx}
-            onClick={() => onFilterChange(category)}
+            onChange={() => onFilterChange(category)}
             className={selectedCategory === category ? 'active' : ''}
           >
             {category}
-          </li>
+          </option>
         ))}
-      </ul>
+      </select>
     </div>
   );
 }

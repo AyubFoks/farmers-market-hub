@@ -3,11 +3,7 @@ import '../styles/components.css';
 import img from '../assets/logo.svg';
 
 function ProductCard({ product, onDelete }) {
-  const { id, name, price, quantity, location, image, farmer, available } = product;
-
-  function handleDelete() {
-    onDelete(id); // Delete by product ID
-  }
+  const { name, price, quantity, location, image, farmer, available } = product;
 
   return (
     <div className="product-card">

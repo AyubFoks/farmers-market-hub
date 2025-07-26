@@ -29,7 +29,7 @@ function Marketplace() {
             );
         }
 
-        if(SelectedCategory) {
+        if(selectedCategory) {
             updated = updated.filter(product => 
                 product.category === selectedCategory
             );
