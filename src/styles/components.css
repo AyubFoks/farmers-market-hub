@@ -100,9 +100,7 @@
 
 /* Homepage */
 
-.home-container,
-.marketplace-container,
-.farmershub-container {
+.home-container {
     padding: 20px;
     display: flex;
     flex-direction: row;
@@ -140,6 +138,8 @@ hr {
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .homepage-query h3 {
@@ -381,6 +381,15 @@ hr {
     margin: 5px 0;
 }
 
+.product-details {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    border-top: #009f52 solid 1px;
+    flex: 1;
+    width: 100%;
+}
+
 .no-products-message {
     color: #d32f2f;
     text-align: center;
@@ -465,19 +474,40 @@ hr {
 /* Add or update in components.css for ProductForm styling */
 .product-form {
     background: #fff;
-    padding: 32px 24px;
-    border-radius: 18px;
+    padding: 20px;
     box-shadow: 0 2px 8px rgba(0,191,99,0.08);
     display: flex;
     flex-direction: column;
-    gap: 18px;
-    max-width: 420px;
-    margin: 0 auto 32px auto;
 }
 
-.product-form input,
-.product-form select,
-.product-form textarea {
+.product-form label {
+    font-size: 1rem;
+    color: #7ED957;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.product-form-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-items: stretch;
+}
+
+.product-form-fields {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-bottom: 20px;
+}
+
+.product-form-description {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.text-input {
     padding: 12px;
     border: 2px solid #7ED957;
     border-radius: 10px;
@@ -487,10 +517,17 @@ hr {
     transition: border 0.2s;
 }
 
-.product-form input:focus,
-.product-form select:focus,
-.product-form textarea:focus {
+.text-input:focus {
     border-color: #009f52;
+}
+
+.file-upload {
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    outline: none;
+    background: #f9f9f9;
+    transition: border 0.2s;
 }
 
 .product-form button {
