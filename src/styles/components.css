@@ -100,7 +100,9 @@
 
 /* Homepage */
 
-.home-container {
+.home-container,
+.marketplace-container,
+.farmershub-container {
     padding: 20px;
     display: flex;
     flex-direction: row;
@@ -287,15 +289,6 @@ hr {
 }
 
 /* Buyers & Farmers Marketplace Pages */
-.marketplace-container,
-.farmershub-container {
-    padding: 30px 40px;
-    background: #f9f9f9;
-    border-radius: 20px;
-    margin: 30px auto;
-    max-width: 1200px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
 
 .marketplace-heading,
 .farmershub-heading {
@@ -345,18 +338,47 @@ hr {
     box-shadow: 0 4px 16px rgba(0,191,99,0.12);
 }
 
+.product-card img,
+.farmer-product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.price {
+    color: black;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.price-quantity {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: #009f52 solid 1px;
+    margin-bottom: 10px;
+}
+
+.unit {
+    color: #555;
+    font-size: 0.9rem;
+}
+
 .product-card h3,
 .farmer-product-card h3 {
     color: #009f52;
-    margin-bottom: 10px;
     font-size: 1.3rem;
+    display: inline;
+    align-content: space-between;
+
 }
 
 .product-card p,
 .farmer-product-card p {
     color: #333;
-    margin-bottom: 6px;
     font-size: 1rem;
+    margin: 5px 0;
 }
 
 .no-products-message {
@@ -364,6 +386,18 @@ hr {
     text-align: center;
     font-size: 1.2rem;
     margin-top: 30px;
+}
+
+.contact-button {
+    background-color: #009f52;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background 0.3s, color 0.3s;
 }
 
 /* Filter & SearchBar */
@@ -417,4 +451,64 @@ hr {
 }
 .market-table tr:last-child {
     border-bottom: none;
+}
+
+.product-sidebar input,
+.product-sidebar select {
+    margin-top: 4px;
+    margin-bottom: 8px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1.5px solid #7ED957;
+    font-size: 1rem;
+}
+/* Add or update in components.css for ProductForm styling */
+.product-form {
+    background: #fff;
+    padding: 32px 24px;
+    border-radius: 18px;
+    box-shadow: 0 2px 8px rgba(0,191,99,0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    max-width: 420px;
+    margin: 0 auto 32px auto;
+}
+
+.product-form input,
+.product-form select,
+.product-form textarea {
+    padding: 12px;
+    border: 2px solid #7ED957;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    outline: none;
+    background: #f9f9f9;
+    transition: border 0.2s;
+}
+
+.product-form input:focus,
+.product-form select:focus,
+.product-form textarea:focus {
+    border-color: #009f52;
+}
+
+.product-form button {
+    background-color: #009f52;
+    color: white;
+    padding: 10px 24px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    align-self: flex-end;
+    transition: background 0.3s, color 0.3s;
+    width: auto;
+    min-width: 140px;
+}
+
+.product-form button:hover {
+    background-color: #7ED957;
+    color: #009f52;
 }
