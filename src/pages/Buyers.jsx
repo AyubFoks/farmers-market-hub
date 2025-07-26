@@ -1,72 +1,117 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import ProductCard from "../components/ProductCard";
-import SearchBar from "../components/SearchBar";
-import SearchFilter from "../components/SearchFilter";
+import ProductSidebar from "../components/ProductSidebar";
 import '../styles/components.css';
+import { db, ref, onValue, push, set } from "../api/firebase";
 
 function Marketplace() {
     const [products, setProducts] = useState([]);
     const [filtered, setFiltered] = useState([]);
     const [searchText, setSearchText] = useState("");
-    const [SelectedCategory, setSelecetdCategory] = useState("All");
+    const [filters, setFilters] = useState({
+        price: "",
+        location: "",
+        category: ""
+    });
+    const [newProduct, setNewProduct] = useState({
+        name: "",
+        price: "",
+        quantity: "",
+        location: "",
+        category: "",
+        image: ""
+    });
 
+    // Fetch products from Firebase Realtime Database
     useEffect(() => {
-        fetch('http://localhost:3000/products')
-        .then(response => response.json())
-        .then(data => {
-            setProducts(data);
-            setFiltered(data);
+        const productsRef = ref(db, "products");
+        const unsubscribe = onValue(productsRef, (snapshot) => {
+            const data = snapshot.val();
+            const productsArray = data
+                ? Object.entries(data).map(([id, value]) => ({ id, ...value }))
+                : [];
+            setProducts(productsArray);
+            setFiltered(productsArray);
         });
-    },[]);
+        return () => unsubscribe();
+    }, []);
 
     useEffect(() => {
         let updated = [...products];
 
-        if(searchText) {
+        // Search filter
+        if (searchText) {
             updated = updated.filter(product =>
-
                 product.name.toLowerCase().includes(searchText.toLowerCase()) ||
-                product.location.toLowerCase().includes(searchText.toLowerCase())
+                (product.location && product.location.toLowerCase().includes(searchText.toLowerCase()))
             );
         }
 
-        if(SelectedCategory) {
-            updated = updated.filter(product => 
-                product.category === SelectedCategory
+        // Price filter
+        if (filters.price) {
+            updated = updated.filter(product =>
+                Number(product.price) <= Number(filters.price)
+            );
+        }
+
+        // Location filter
+        if (filters.location) {
+            updated = updated.filter(product =>
+                product.location === filters.location
+            );
+        }
+
+        // Category filter
+        if (filters.category) {
+            updated = updated.filter(product =>
+                product.category === filters.category
             );
         }
 
         setFiltered(updated);
-    }, [searchText, SelectedCategory,products]);
+    }, [searchText, filters, products]);
+
+    // Add new product to Firebase
+    const handleAddProduct = async (e) => {
+        e.preventDefault();
+        const productsRef = ref(db, "products");
+        const newProductRef = push(productsRef);
+        await set(newProductRef, newProduct);
+        setNewProduct({
+            name: "",
+            price: "",
+            quantity: "",
+            location: "",
+            category: "",
+            image: ""
+        });
+    };
 
     return (
         <div className="marketplace-container">
             <h2 className="marketplace-heading">Browse Available Produce</h2>
 
             <div className="marketplace-layout">
-                <SearchFilter
-                products={products}
-                SelectedCategory={SelectedCategory}
-                onFilterChange={setSelecetdCategory}
+                <ProductSidebar
+                    products={products}
+                    onSearch={setSearchText}
+                    onFilter={setFilters}
                 />
                 <div className="marketplace-content">
-                    <SearchBar searchText={searchText}
-                    onSearchTextChange={setSearchText} />
-
                     <div className="product-grid">
-                        {filtered.length ===0? (
+                        {filtered.length === 0 ? (
                             <p>No Produce Found.</p>
-                        ):(
+                        ) : (
                             filtered.map(product => (
                                 <ProductCard key={product.id}
-                                product={product} />
+                                    product={product} />
                             ))
-                        )}    
-                    </div>"
+                        )}
+                    </div>
                 </div>
             </div>
         </div>
     );
-    }
+}
 
-    export default Marketplace;
+export default Marketplace;
