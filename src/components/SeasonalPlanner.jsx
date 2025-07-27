@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 const tipsData = {
-  'Kampala': [
+  'Wakiso': [
     { tip: 'Best time for tomatoes', icon: '🍅' },
     { tip: 'Avoid maize during wet season', icon: '🌽' }
   ],
@@ -15,7 +15,7 @@ const tipsData = {
   ]
 };
 
-const regions = ['Kampala', 'Nairobi'];
+const regions = ['Wakiso', 'Nairobi'];
 
 function SeasonalPlanner() {
   const [region, setRegion] = useState('');
