@@ -96,12 +96,13 @@ function FarmersHub() {
     );
   }
 
-  return (
+  else return (
     <div className="home-container">
       <Sidebar />
       <div className="main-content">
         <h1> Welcome to the Farmers Hub! </h1>
-        <p> Submit, edit or delete your product posts here and connect with buyers across the country. </p>
+        <p> Post your products here and connect with buyers across the country. </p>
+        <p> To join our community of verified and trusted farmers, email us at verifyme@farmershub.com </p>
         {/* Show add form only if not editing */}
         {!editingProduct && (
           <ProductForm onSubmit={handleAddProduct} />
