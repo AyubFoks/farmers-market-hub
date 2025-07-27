@@ -8,19 +8,36 @@ import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
 import SeasonalPlanner from './components/SeasonalPlanner';
 import "./styles/App.css";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
     return (
         <div className="App-container">
-            <Router >
+            <Router>
                 <Header />
                 <Routes>
-                    <Route path="/home" element={<Home />} />
-                    <Route path="/marketplace" element={<MarketPlace />} />
-                    <Route path="/farmers-hub" element={<FarmersHub />} />
+                    <Route path="/home" element={
+                        <ProtectedRoute>
+                            <Home />
+                        </ProtectedRoute>
+                    } />
+                    <Route path="/marketplace" element={
+                        <ProtectedRoute>
+                            <MarketPlace />
+                        </ProtectedRoute>
+                    } />
+                    <Route path="/farmers-hub" element={
+                        <ProtectedRoute>
+                            <FarmersHub />
+                        </ProtectedRoute>
+                    } />
                     <Route path="/" element={<Login />} />
                     <Route path="/register" element={<Register />} />
-                    <Route path="/planner" element={<SeasonalPlanner />} />
+                    <Route path="/planner" element={
+                        <ProtectedRoute>
+                            <SeasonalPlanner />
+                        </ProtectedRoute>
+                    } />
                 </Routes>
             </Router>
         </div>
@@ -28,4 +45,4 @@ function App() {
 }
 
 export default App;
-// This code sets up a React application with routing using React Router.
+// This code sets up a React application with protected routing using React Router.

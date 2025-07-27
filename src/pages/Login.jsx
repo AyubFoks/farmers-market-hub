@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { auth, googleProvider } from "../api/firebase";
-import { signInWithPopup, signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithPopup, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import "../styles/components.css";
 import { Link, useNavigate } from "react-router-dom";
 import logoGreen from '../assets/logo-green.svg';
@@ -11,6 +11,13 @@ function Login() {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) navigate("/home");
+        });
+        return () => unsubscribe();
+    }, [navigate]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();

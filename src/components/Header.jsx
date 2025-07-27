@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { auth } from '../api/firebase';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { useNavigate } from "react-router-dom";
 import logo from '../assets/logo.svg';
 import defaultuser from '../assets/default-user.png';
 import '../styles/components.css';
@@ -9,6 +10,7 @@ function Header() {
     const [user, setUser] = useState(null);
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const dropdownRef = useRef(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -35,6 +37,7 @@ function Header() {
     const handleLogout = async () => {
         await signOut(auth);
         setDropdownOpen(false);
+        navigate("/"); // Redirect to login after logout
     };
 
     return (
