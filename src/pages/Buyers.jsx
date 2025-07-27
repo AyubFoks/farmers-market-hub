@@ -88,26 +88,23 @@ function Marketplace() {
     };
 
     return (
-        <div className="marketplace-container">
-            
-            <div className="marketplace-layout">
-                <ProductSidebar
-                    products={products}
-                    onSearch={setSearchText}
-                    onFilter={setFilters}
-                />
-                <div className="marketplace-content">
-                    <h2 className="marketplace-heading">Browse Available Produce</h2>
-                    <div className="product-grid">
-                        {filtered.length === 0 ? (
-                            <p>No Produce Found.</p>
-                        ) : (
-                            filtered.map(product => (
-                                <ProductCard key={product.id}
-                                    product={product} />
-                            ))
-                        )}
-                    </div>
+        <div className="home-container">
+            <ProductSidebar
+                products={products}
+                onSearch={setSearchText}
+                onFilter={setFilters}
+            />
+            <div className="marketplace-content">
+                <h2 className="marketplace-heading">Browse Available Produce</h2>
+                <div className="product-grid">
+                    {filtered.length === 0 ? (
+                        <p>No Produce Found.</p>
+                    ) : (
+                        filtered.map(product => (
+                            <ProductCard key={product.id}
+                                product={product} />
+                        ))
+                    )}
                 </div>
             </div>
         </div>

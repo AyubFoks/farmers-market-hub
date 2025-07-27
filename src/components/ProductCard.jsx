@@ -32,7 +32,10 @@ function ProductCard({ product, onDelete }) {
         <p className='unit'>Quantity: {quantity}</p>
       </div>
       <p>{description} </p>
-      <hr />
+      <div className='product-details'>
+        <p><strong>Location:</strong> {location}</p>
+        <p><strong>Posted by:</strong> {postedBy}</p>
+      </div>
       <div className="product-card-actions">
         <button 
           onClick={toggleContact}

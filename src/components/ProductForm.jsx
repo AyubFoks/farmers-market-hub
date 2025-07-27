@@ -94,90 +94,120 @@ function ProductForm() {
   return (
     <form className='product-form' onSubmit={handleSubmit}>
       <h2>POST PRODUCT</h2>
+      <div className='product-form-container'>
+        <div className='product-form-fields'>
+          <label htmlFor="Product Name">Product name</label>
+          <input className='text-input'
+            type="text"
+            value={name}
+            onChange={e => setName(e.target.value)}
+            placeholder="Enter Product Name"
+            required
+          />
+        </div>
 
-      <input
-        type="text"
-        value={name}
-        onChange={e => setName(e.target.value)}
-        placeholder="Product Name"
-        required
-      />
+        <div className='product-form-fields'>
+          <label htmlFor="Category">Select Category</label>
+          <select className='text-input'
+            value={category}
+            onChange={e => setCategory(e.target.value)}
+            required
+          >
+            <option value="General">General</option>
+            <option value="Fruits">Fruits</option>
+            <option value="Vegetables">Vegetables</option>
+            <option value="Grains">Grains</option>
+            <option value="Dairy">Dairy</option>
+            <option value="Meat">Meat</option>
+            <option value="Poultry">Poultry</option>
+            <option value="Fish">Fish</option>
+            <option value="Herbs">Herbs</option>
+            <option value="Spices">Spices</option>
+            <option value="Other">Other</option>
+          </select></div>
+      </div>
 
-      <select
-        value={category}
-        onChange={e => setCategory(e.target.value)}
-        required
-      >
-        <option value="General">General</option>
-        <option value="Fruits">Fruits</option>
-        <option value="Vegetables">Vegetables</option>
-        <option value="Grains">Grains</option>
-        <option value="Dairy">Dairy</option>
-        <option value="Meat">Meat</option>
-        <option value="Poultry">Poultry</option>
-        <option value="Fish">Fish</option>
-        <option value="Herbs">Herbs</option>
-        <option value="Spices">Spices</option>
-        <option value="Other">Other</option>
-      </select>
+      <div className='product-form-container'>
+        <div className='product-form-fields'>
+          <label htmlFor="Price">Price</label>
+          <input className='text-input'
+            type="number"
+            value={price}
+            onChange={e => setPrice(e.target.value)}
+            placeholder="Enter price per unit"
+            required
+          />
+        </div>
 
-      <input
-        type="number"
-        value={price}
-        onChange={e => setPrice(e.target.value)}
-        placeholder="Price"
-        required
-      />
+        <div className='product-form-fields'>
+          <label htmlFor="Quantity">Quantity</label>
+          <input className='text-input'
+            type="number"
+            value={quantity}
+            onChange={e => setQuantity(e.target.value)}
+            placeholder="Enter quantity"
+            required
+            style={{ flex: 2 }}
+          />
+        </div>
 
-      <div style={{ display: "flex", gap: "10px" }}>
-        <input
-          type="number"
-          value={quantity}
-          onChange={e => setQuantity(e.target.value)}
-          placeholder="Quantity"
-          required
-          style={{ flex: 2 }}
-        />
-        <input
+        <div className='product-form-fields'>
+          <label htmlFor="Unit">Unit</label>
+          <input className='text-input'
+            type="text"
+            value={unit}
+            onChange={e => setUnit(e.target.value)}
+            placeholder="e.g. kg, bag, crate, tray, etc."
+            required
+            style={{ flex: 3 }}
+          />
+        </div>
+      </div>
+
+      <div className='product-form-container'>
+        <div className='product-form-fields'>
+        <label htmlFor="Location">Location</label>
+        <input className='text-input'
           type="text"
-          value={unit}
-          onChange={e => setUnit(e.target.value)}
-          placeholder="Unit (e.g. kg, bags, crates)"
+          value={location}
+          onChange={e => setLocation(e.target.value)}
+          placeholder="Enter Location"
           required
-          style={{ flex: 3 }}
         />
       </div>
 
-      <input
-        type="text"
-        value={location}
-        onChange={e => setLocation(e.target.value)}
-        placeholder="Enter Location"
-        required
-      />
+      <div className='product-form-fields'>
+        <label htmlFor="Contact">Contact Information</label>
+        <input className='text-input'
+          type="text"
+          value={contact}
+          onChange={e => setContact(e.target.value)}
+          placeholder="Enter your contact info"
+          required
+        />
+      </div>
+      </div>
 
-      <textarea
-        value={description}
-        onChange={e => setDescription(e.target.value)}
-        placeholder="Product Description"
-        rows={3}
-        required
-      />
+      <div className='product-form-fields'>
+        <label htmlFor="Description">Description</label>
+        <textarea className='text-input'
+          value={description}
+          onChange={e => setDescription(e.target.value)}
+          placeholder="Insert a short description of the product"
+          rows={3}
+          required
+        />
+      </div>
 
-      <input
-        type="file"
-        accept="image/*"
-        onChange={e => setImageFile(e.target.files[0])}
-        required
-      />
-
-      <input
-        type="text"
-        value={contact}
-        onChange={e => setContact(e.target.value)}
-        placeholder="Contact Information"
-        required
-      />
+      <div className='product-form-fields'>
+        <label htmlFor="Image">Product Image</label>
+        <input className='file-upload'
+          type="file"
+          accept="image/*"
+          onChange={e => setImageFile(e.target.files[0])}
+          required
+        />
+      </div>
 
       <button type="submit" disabled={loading}>
         {loading ? "Posting..." : "Add Product"}
