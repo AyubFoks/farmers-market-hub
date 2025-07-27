@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../styles/components.css';
 import img from '../assets/logo.svg';
 
-function ProductCard({ product }) {
+function FarmersCard({ product, onDelete, onEdit }) {
   const { 
     name,
     description, 
@@ -36,6 +36,8 @@ function ProductCard({ product }) {
         <p><strong>Posted by:</strong> {postedBy}</p>
       </div>
       <div className="product-card-actions">
+        <button onClick={onEdit}>Edit</button>
+        <button onClick={onDelete} className="delete-button">Delete</button>
         <button 
           onClick={toggleContact}
           className="contact-button"
@@ -53,4 +55,4 @@ function ProductCard({ product }) {
   );
 }
 
-export default ProductCard;
+export default FarmersCard;

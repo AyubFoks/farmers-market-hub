@@ -108,12 +108,14 @@
 }
 
 .sidebar {
-    width: 20%;
+    flex-basis: 20%;
+    flex-grow: 0.01;      /* Allows sidebar to grow if space is available */
     background-color: #7ed9571e;
     padding: 20px;
 }
 .main-content {
-    width: 80%;
+    flex-basis: 80%;
+    flex-grow: 3;      /* Main content grows more than sidebar */
     background-color: #f9f9f9;
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);

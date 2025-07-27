@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ProductCard from "../components/ProductCard";
 import ProductSidebar from "../components/ProductSidebar";
 import '../styles/components.css';
-import { db, ref, onValue, push, set } from "../api/firebase";
+import { db, ref, onValue } from "../api/firebase";
 
 function Marketplace() {
     const [products, setProducts] = useState([]);
@@ -12,14 +12,6 @@ function Marketplace() {
         price: "",
         location: "",
         category: ""
-    });
-    const [newProduct, setNewProduct] = useState({
-        name: "",
-        price: "",
-        quantity: "",
-        location: "",
-        category: "",
-        image: ""
     });
 
     // Fetch products from Firebase Realtime Database
@@ -70,22 +62,6 @@ function Marketplace() {
 
         setFiltered(updated);
     }, [searchText, filters, products]);
-
-    // Add new product to Firebase
-    const handleAddProduct = async (e) => {
-        e.preventDefault();
-        const productsRef = ref(db, "products");
-        const newProductRef = push(productsRef);
-        await set(newProductRef, newProduct);
-        setNewProduct({
-            name: "",
-            price: "",
-            quantity: "",
-            location: "",
-            category: "",
-            image: ""
-        });
-    };
 
     return (
         <div className="home-container">

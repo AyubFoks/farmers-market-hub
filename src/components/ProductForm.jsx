@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import { db, ref, push, set } from "../api/firebase";
+import React, { useState, useEffect } from 'react';
+import { db, ref, push, set, update } from "../api/firebase";
 import { auth } from "../api/firebase";
 
 
-function ProductForm() {
+function ProductForm({ initialData = null, onSubmit, onCancel }) {
+  const [id, setId] = useState(initialData ? initialData.id : '');
   const [name, setName] = useState('');
   const [category, setCategory] = useState('General');
   const [price, setPrice] = useState('');
@@ -12,10 +13,27 @@ function ProductForm() {
   const [location, setLocation] = useState('');
   const [description, setDescription] = useState('');
   const [imageFile, setImageFile] = useState(null);
+  const [imageUrl, setImageUrl] = useState('');
   const [contact, setContact] = useState('');
   const [loading, setLoading] = useState(false);
 
-  // Replace with your Cloudinary unsigned upload preset and cloud name
+  // Pre-fill form if editing
+  useEffect(() => {
+    if (initialData) {
+      setId(initialData.id || '');
+      setName(initialData.name || '');
+      setCategory(initialData.category || 'General');
+      setPrice(initialData.price || '');
+      setQuantity(initialData.quantity || '');
+      setUnit(initialData.unit || '');
+      setLocation(initialData.location || '');
+      setDescription(initialData.description || '');
+      setImageUrl(initialData.image || '');
+      setContact(initialData.contact || '');
+    }
+  }, [initialData]);
+
+  // Cloudinary config
   const CLOUDINARY_UPLOAD_PRESET = "Farmers-Connect";
   const CLOUDINARY_CLOUD_NAME = "dbnqkctmx";
 
@@ -36,28 +54,31 @@ function ProductForm() {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    if (!name || !category || !price || !quantity || !unit || !location || !description || !imageFile || !contact) {
+    if (!name || !category || !price || !quantity || !unit || !location || !description || (!imageFile && !imageUrl) || !contact) {
       alert("Please fill all the missing fields.");
       return;
     }
 
     setLoading(true);
 
-    let finalImageUrl = "";
-    try {
-      finalImageUrl = await uploadToCloudinary(imageFile);
-    } catch (err) {
-      alert("Image upload failed.");
-      setLoading(false);
-      return;
+    let finalImageUrl = imageUrl;
+    if (imageFile) {
+      try {
+        finalImageUrl = await uploadToCloudinary(imageFile);
+      } catch (err) {
+        alert("Image upload failed.");
+        setLoading(false);
+        return;
+      }
     }
 
     const user = auth.currentUser;
     const postedBy = user ? (user.displayName || user.email) : "Anonymous";
 
-    const newProduct = {
+    const productData = {
+      id,
       name,
-      category: "General",
+      category,
       price: parseFloat(price),
       quantity: parseInt(quantity),
       unit: unit.trim(),
@@ -66,25 +87,24 @@ function ProductForm() {
       image: finalImageUrl,
       contact: contact.trim(),
       postedBy,
-      createdAt: Date.now()
+      updatedAt: Date.now(),
     };
 
     try {
-      const productsRef = ref(db, "products");
-      const newProductRef = push(productsRef);
-      await set(newProductRef, newProduct);
-
-      // Reset form
-      setName('');
-      setCategory('');
-      setPrice('');
-      setQuantity('');
-      setUnit('');
-      setLocation('');
-      setDescription('');
-      setImageFile(null);
-      setContact('');
-      alert("Product posted successfully!");
+      if (initialData && initialData.id) {
+        // EDIT: Update existing product
+        const productRef = ref(db, `products/${initialData.id}`);
+        await update(productRef, productData);
+        alert("Product updated successfully!");
+        if (onSubmit) onSubmit({ ...productData, id: initialData.id }); // <-- pass updated product
+      } else {
+        // ADD: Create new product
+        const productsRef = ref(db, "products");
+        const newProductRef = push(productsRef);
+        await set(newProductRef, { ...productData, createdAt: Date.now() });
+        alert("Product posted successfully!");
+        if (onSubmit) onSubmit();
+      }
     } catch (err) {
       alert("Error posting product: " + err.message);
     }
@@ -93,7 +113,7 @@ function ProductForm() {
 
   return (
     <form className='product-form' onSubmit={handleSubmit}>
-      <h2>POST PRODUCT</h2>
+      <h2>{initialData ? "EDIT PRODUCT" : "POST PRODUCT"}</h2>
       <div className='product-form-container'>
         <div className='product-form-fields'>
           <label htmlFor="Product Name">Product name</label>
@@ -205,13 +225,19 @@ function ProductForm() {
           type="file"
           accept="image/*"
           onChange={e => setImageFile(e.target.files[0])}
-          required
         />
+        {imageUrl && !imageFile && (
+          <img src={imageUrl} alt="Current" style={{ width: 80, marginTop: 8 }} />
+        )}
       </div>
-
       <button type="submit" disabled={loading}>
-        {loading ? "Posting..." : "Add Product"}
+        {loading ? (initialData ? "Updating..." : "Posting...") : (initialData ? "Update Product" : "Add Product")}
       </button>
+      {initialData && (
+        <button type="button" onClick={onCancel} style={{ marginLeft: 10 }}>
+          Cancel
+        </button>
+      )}
     </form>
   );
 }
