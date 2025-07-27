@@ -47,13 +47,8 @@ Farmer's Market Hub is a React application connecting farmers directly to buyers
     ```bash
     npm install
     ```
-    
-3. **Run JSON Server**
-    ```bash
-    npx json-server --watch src/db.json --port 3000
-    ```
 
-4. **Run React App**
+3. **Run React App**
     ```bash
     npm start
     ```
@@ -76,7 +71,3 @@ Farmer's Market Hub is a React application connecting farmers directly to buyers
 - [Malcolm Kagolobya](https://github.com/KagsM)
 - [Amos Banda](https://github.com/BandaTheSecond)
 - [Ayub Karanja](https://github.com/AyubFoks)
-
-## Licence
-
-Free to use and modify for personal and commercial purposes.
