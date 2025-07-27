@@ -34,6 +34,7 @@ function FarmersCard({ product, onDelete, onEdit }) {
       <div className='product-details'>
         <p><strong>Location:</strong> {location}</p>
         <p><strong>Posted by:</strong> {postedBy}</p>
+        {product.verified && <span className="verified-badge">✔ Verified Farmer</span>}
       </div>
       <div className="product-card-actions">
         <button onClick={onEdit}>Edit</button>

@@ -1,26 +1,33 @@
 import React, { useState, useEffect } from "react";
-import ProductSidebar from "../components/ProductSidebar";
+import FarmersSearchBar from "../components/FarmersSearchBar";
 import ProductForm from "../components/ProductForm";
 import FarmersCard from "../components/FarmersCard";
 import Sidebar from "../components/Sidebar";
 import { db, ref, onValue, remove, update } from "../api/firebase";
 import { auth } from "../api/firebase";
+import { onAuthStateChanged } from "firebase/auth";
 
 function FarmersHub() {
   const [products, setProducts] = useState([]);
   const [filtered, setFiltered] = useState([]);
   const [editingProduct, setEditingProduct] = useState(null);
   const [searchText, setSearchText] = useState("");
-  const [filters, setFilters] = useState({
-    price: "",
-    location: "",
-    category: ""
-  });
   const [user, setUser] = useState(null);
+  const [userProfile, setUserProfile] = useState(null);
 
   // Track current user
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(setUser);
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      setUser(firebaseUser);
+      if (firebaseUser) {
+        const userRef = ref(db, `products/${firebaseUser.postedBy}`);
+        onValue(userRef, (snapshot) => {
+          setUserProfile(snapshot.val());
+        });
+      } else {
+        setUserProfile(null);
+      }
+    });
     return () => unsubscribe();
   }, []);
 
@@ -56,29 +63,8 @@ function FarmersHub() {
       );
     }
 
-    // Price filter
-    if (filters.price) {
-      updated = updated.filter(product =>
-        Number(product.price) <= Number(filters.price)
-      );
-    }
-
-    // Location filter
-    if (filters.location) {
-      updated = updated.filter(product =>
-        product.location === filters.location
-      );
-    }
-
-    // Category filter
-    if (filters.category) {
-      updated = updated.filter(product =>
-        product.category === filters.category
-      );
-    }
-
     setFiltered(updated);
-  }, [products, user, searchText, filters]);
+  }, [products, user, searchText]);
 
   // Add product (handled by ProductForm, which writes to Firebase)
   function handleAddProduct() {
@@ -101,6 +87,15 @@ function FarmersHub() {
     await remove(productRef);
   }
 
+  if (userProfile && !userProfile.verified) {
+    return (
+      <div className="main-content">
+        <h2>Access Denied</h2>
+        <p>You must be a <b>verified farmer</b> to post produce. Please contact admin.</p>
+      </div>
+    );
+  }
+
   return (
     <div className="home-container">
       <Sidebar />
@@ -111,11 +106,11 @@ function FarmersHub() {
         {!editingProduct && (
           <ProductForm onSubmit={handleAddProduct} />
         )}
-        {/* ProductSidebar for filtering */}
-        <ProductSidebar
+        {/* FarmersSearchBar for filtering */}
+        <h1>Your Products</h1>
+        <FarmersSearchBar
           products={products}
           onSearch={setSearchText}
-          onFilter={setFilters}
         />
         <div className="farmer-product-grid">
           {filtered.length === 0 ? (

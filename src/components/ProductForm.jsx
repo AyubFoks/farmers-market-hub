@@ -16,6 +16,7 @@ function ProductForm({ initialData = null, onSubmit, onCancel }) {
   const [imageUrl, setImageUrl] = useState('');
   const [contact, setContact] = useState('');
   const [loading, setLoading] = useState(false);
+  const [verified, setVerified] = useState(false);
 
   // Pre-fill form if editing
   useEffect(() => {
@@ -30,6 +31,7 @@ function ProductForm({ initialData = null, onSubmit, onCancel }) {
       setDescription(initialData.description || '');
       setImageUrl(initialData.image || '');
       setContact(initialData.contact || '');
+      setVerified(initialData.verified || false);
     }
   }, [initialData]);
 
@@ -88,6 +90,7 @@ function ProductForm({ initialData = null, onSubmit, onCancel }) {
       contact: contact.trim(),
       postedBy,
       updatedAt: Date.now(),
+      verified: verified
     };
 
     try {
