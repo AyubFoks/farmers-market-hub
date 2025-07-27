@@ -106,7 +106,7 @@ function FarmersHub() {
       <Sidebar />
       <div className="main-content">
         <h1> Welcome to the Farmers Hub! </h1>
-        <p> Post your products here and connect with buyers across the country. </p>
+        <p> Submit, edit or delete your product posts here and connect with buyers across the country. </p>
         {/* Show add form only if not editing */}
         {!editingProduct && (
           <ProductForm onSubmit={handleAddProduct} />
