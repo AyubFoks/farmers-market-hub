@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import '../styles/components.css';
 import img from '../assets/logo.svg';
 
@@ -11,16 +10,8 @@ function FarmersCard({ product, onDelete, onEdit }) {
     location, 
     image, 
     postedBy, 
-    contact,
     unit, 
   } = product;
-  
-  const [showContact, setShowContact] = useState(false);
-
-  // Toggle contact information visibility
-  function toggleContact() {
-    setShowContact(!showContact);
-  }
 
   return (
     <div className="product-card">
@@ -39,12 +30,6 @@ function FarmersCard({ product, onDelete, onEdit }) {
       <div className="product-card-actions">
         <button onClick={onEdit}>Edit</button>
         <button onClick={onDelete} className="delete-button">Delete</button>
-        
-        {showContact && (
-          <div className="contact-info">
-            <p>Contact: {contact || 'Not available'}</p>
-          </div>
-        )}
       </div>
     </div>
   );
