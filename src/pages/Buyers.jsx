@@ -3,6 +3,7 @@ import ProductCard from "../components/ProductCard";
 import ProductSidebar from "../components/ProductSidebar";
 import '../styles/components.css';
 import { db, ref, onValue } from "../api/firebase";
+import { off } from "firebase/database";
 
 function Marketplace() {
     const [products, setProducts] = useState([]);
@@ -17,15 +18,15 @@ function Marketplace() {
     // Fetch products from Firebase Realtime Database
     useEffect(() => {
         const productsRef = ref(db, "products");
-        const unsubscribe = onValue(productsRef, (snapshot) => {
+        const handleValueChange = snapshot => {
             const data = snapshot.val();
             const productsArray = data
                 ? Object.entries(data).map(([id, value]) => ({ id, ...value }))
                 : [];
             setProducts(productsArray);
             setFiltered(productsArray);
-        });
-        return () => unsubscribe();
+        };
+        return () => off(productsRef, "value", handleValueChange);
     }, []);
 
     useEffect(() => {

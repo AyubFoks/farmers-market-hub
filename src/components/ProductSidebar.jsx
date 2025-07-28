@@ -9,13 +9,14 @@ function ProductSidebar({ products, onSearch, onFilter }) {
     });
 
     // Get unique locations and categories from products
-    const locations = Array.from(new Set(products.map(p => p.location).filter(Boolean)));
-    const categories = Array.from(new Set(products.map(p => p.category).filter(Boolean)));
+    const locations = Array.from(new Set(products.map(p => p.location?.toLowerCase()).filter(Boolean))).sort();
+    const categories = Array.from(new Set(products.map(p => p.category?.toLowerCase()).filter(Boolean))).sort();
+
 
     // Handle search input
     const handleSearchChange = (e) => {
         setSearchText(e.target.value);
-        onSearch(e.target.value);
+        onSearch(e.target.value.trim());
     };
 
     // Handle filter changes
@@ -77,6 +78,19 @@ function ProductSidebar({ products, onSearch, onFilter }) {
                     ))}
                 </select>
             </div>
+            <button
+    onClick={() => {
+        const reset = { price: "", location: "", category: "" };
+        setSearchText("");
+        setFilter(reset);
+        onSearch("");
+        onFilter(reset);
+    }}
+    style={{ marginTop: "16px", width: "100%", background: "#eee", padding: "8px", border: "none", cursor: "pointer" }}
+>
+    Clear All Filters
+</button>
+
         </div>
     );
 }
