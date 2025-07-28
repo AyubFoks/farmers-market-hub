@@ -43,7 +43,7 @@ Farmer's Market Hub is a React application connecting farmers directly to buyers
 
 ## Tech Stack
 - **React** (Frontend)
-- **Firebase** (Authentication,Realtime Database)
+- **Firebase** (Authentication, Realtime Database)
 - **Cloudinary** (Media storage)
 - **useState & useEffect** (React hooks for state & side effects)
 - **Vanilla CSS** (Styling)
@@ -87,6 +87,6 @@ Farmer's Market Hub is a React application connecting farmers directly to buyers
 - [Amos Banda](https://github.com/BandaTheSecond)
 - [Ayub Karanja](https://github.com/AyubFoks)
 
-## Licence
+## License
 
 Distributed under the MIT License. See [MIT License](https://opensource.org/licenses/MIT) for details
