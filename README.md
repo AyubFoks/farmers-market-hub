@@ -76,7 +76,7 @@ Farmer's Market Hub is a React application connecting farmers directly to buyers
         ├── api/            # API functions for CRUD
         ├── assets/         # Media 
         ├── components/     # UI Components
-        ├── pages/          # Pages (Home, Farmers, Buyers)
+        ├── pages/          # Pages (Home, Farmers, Buyers, Login, Order, Register)
         ├── styles/         # CSS files
         ├── App.jsx         # Main app component
         └── index.js        # React entry point
