@@ -39,12 +39,6 @@ function FarmersCard({ product, onDelete, onEdit }) {
       <div className="product-card-actions">
         <button onClick={onEdit}>Edit</button>
         <button onClick={onDelete} className="delete-button">Delete</button>
-        <button 
-          onClick={toggleContact}
-          className="contact-button"
-        >
-          {showContact ? 'Hide Contact' : 'Contact Seller'}
-        </button>
         
         {showContact && (
           <div className="contact-info">

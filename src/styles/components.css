@@ -188,6 +188,19 @@ hr {
     transition: background-color 0.3s ease-in-out;
 }
 
+.resources-list li {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: #009f52;
+}
+.resources-list a {
+    color: #009f52;
+    text-decoration: none;
+}
+.resources-list a:hover {
+    text-decoration: underline;
+}
+
 /* Login & Register Pages */
 .login-container,
 .register-container {
@@ -399,16 +412,24 @@ hr {
     margin-top: 30px;
 }
 
-.contact-button {
+.contact-button,
+.product-card-actions button {
     background-color: #009f52;
     color: white;
     padding: 10px 20px;
+    margin-right: 20px;
     border: none;
     border-radius: 25px;
     cursor: pointer;
     font-size: 1rem;
     font-weight: bold;
     transition: background 0.3s, color 0.3s;
+}
+
+.product-card-actions button:hover,
+.contact-button:hover {
+    background-color: #7ED957;
+    color: #009f52;
 }
 
 /* Filter & SearchBar */
@@ -449,11 +470,13 @@ hr {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 1px 4px rgba(0,191,99,0.08);
+    translate: -15px;
 }
 .market-table th, .market-table td {
-    padding: 8px 12px;
+    padding: 4px;
     border-bottom: 1px solid #e0e0e0;
     text-align: left;
+    font-size: 0.7rem;
 }
 .market-table th {
     background: #7ED957;
